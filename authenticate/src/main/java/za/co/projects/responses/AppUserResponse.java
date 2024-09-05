@@ -1,23 +1,14 @@
-package za.co.projects.entities;
+package za.co.projects.responses;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class AppUser {
+public class AppUserResponse {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	private String username;
 	private String password;
 	private String email;
 	private String role;
 	
-	public AppUser(Long id, String username, String password, String email, String role) {
+	public AppUserResponse(Long id, String username, String password, String email, String role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -26,7 +17,7 @@ public class AppUser {
 		this.role = role;
 	}
 
-	public AppUser() {
+	public AppUserResponse() {
 		super();
 	}
 
@@ -72,13 +63,10 @@ public class AppUser {
 
 	@Override
 	public String toString() {
-		return "AppUser [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
+		return "AppUserResponse [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
 				+ ", role=" + role + "]";
 	}
 	
 	
-	
-	
-	
 
-}//------------
+}//------------------------------------

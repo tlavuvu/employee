@@ -1,41 +1,22 @@
-package za.co.projects.entities;
+package za.co.projects.requests;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class AppUser {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+public class AppUserRequest {
 	
 	private String username;
 	private String password;
 	private String email;
 	private String role;
 	
-	public AppUser(Long id, String username, String password, String email, String role) {
+	public AppUserRequest(String username, String password, String email, String role) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.role = role;
 	}
 
-	public AppUser() {
+	public AppUserRequest() {
 		super();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getUsername() {
@@ -69,16 +50,7 @@ public class AppUser {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
-	@Override
-	public String toString() {
-		return "AppUser [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", role=" + role + "]";
-	}
-	
-	
-	
 	
 	
 
-}//------------
+}//-----------------
