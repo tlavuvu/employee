@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -18,17 +18,17 @@ public class Address {
 	private String town;
 	private String postalCode;
 	
-	@ManyToOne
-	private Person person;
+	@OneToOne
+	private Employee employee;
 
-	public Address(Long id, String houseNumber, String streetName, String town, String postalCode, Person person) {
+	public Address(Long id, String houseNumber, String streetName, String town, String postalCode, Employee employee) {
 		super();
 		this.id = id;
 		this.houseNumber = houseNumber;
 		this.streetName = streetName;
 		this.town = town;
 		this.postalCode = postalCode;
-		this.person = person;
+		this.employee = employee;
 	}
 
 	public Address() {
@@ -75,21 +75,20 @@ public class Address {
 		this.postalCode = postalCode;
 	}
 
-	public Person getPerson() {
-		return person;
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", houseNumber=" + houseNumber + ", streetName=" + streetName + ", town=" + town
-				+ ", postalCode=" + postalCode + ", person=" + person + "]";
+				+ ", postalCode=" + postalCode + ", employee=" + employee + "]";
 	}
-	
-	
+
 	
 
 }//----------------------

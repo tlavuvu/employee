@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import za.co.projects.entities.AppUser;
+import za.co.projects.entities.Employee;
 import za.co.projects.repositories.AppUserRepository;
+import za.co.projects.repositories.EmployeeRepository;
 import za.co.projects.requests.AppUserRequest;
 import za.co.projects.requests.LoginRequest;
 import za.co.projects.responses.AppUserResponse;
@@ -21,15 +22,8 @@ public class AppUserService {
 	private AppUserRepository appUserRepository;
 	
 	@Autowired
-	private AppUserResponse appUserResponse;
+	private EmployeeRepository employeeRepository;
 	
-	@Autowired
-	private AppUser appUser;
-	
-//	public AppUserService(AppUserRepository appUserRepository) {
-//		super();
-//		this.appUserRepository = appUserRepository;
-//	}
 
 	public AppUserResponse saveAppUser(AppUserRequest appUserRequest) {
 		AppUser user = appUserRepository.save(appUserRequestToAppUser(appUserRequest));
@@ -43,12 +37,31 @@ public class AppUserService {
 	
 	public LoginResponse login(LoginRequest loginRequest) {
 		Optional<AppUser> appUserO = appUserRepository.findByUsername(loginRequest.getUsername());
+		AppUser appUser =  new AppUser();
+		LoginResponse loginResponse = new LoginResponse();
 		if(appUserO.isPresent()) {
 			appUser = appUserO.get();
+			if(loginRequest.getPassword().equals(appUser.getPassword())) {
+				Optional<Employee> employeeO = employeeRepository.findByUsername(loginRequest.getUsername());
+				if(employeeO.isPresent()) {
+					Employee employee = employeeO.get();
+					loginResponse.setName(employee.getName());
+					loginResponse.setEmployeeNumber(employee.getEmployeeNumber());
+					loginResponse.setSurname(employee.getSurname());
+					loginResponse.setUsername(loginRequest.getUsername());
+					loginResponse.setIdNumber(employee.getIdnumber());
+					loginResponse.setAddress(employee.getAddress());
+					loginResponse.setMessage("success");
+				}else {
+					loginResponse.setMessage("Error : Employee not found" );
+				}
+			}else {
+				loginResponse.setMessage("Error : Username/Password is incorrect" );
+			}
 		}else {
-			
+			loginResponse.setMessage("Error : Username/Password is incorrect" );
 		}
-		appUserResponse = AppUserToAppUserResponse(appUser);
+		AppUserToAppUserResponse(appUser);
 		return null;
 	}
 	
