@@ -3,26 +3,20 @@ package za.co.projects.requests;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AppUserRequest {
+public class LoginRequest {
 	
 	private String username;
 	private String password;
-	private String email;
-	private String role;
 	
-	public AppUserRequest(String username, String password, String email, String role) {
+	public LoginRequest(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.email = email;
-		this.role = role;
 	}
 
-	public AppUserRequest() {
+	public LoginRequest() {
 		super();
 	}
-	
-	
 
 	public String getUsername() {
 		return username;
@@ -40,22 +34,10 @@ public class AppUserRequest {
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
+	@Override
+	public String toString() {
+		return "LoginRequest [username=" + username + ", password=" + password + "]";
 	}
 	
-	
 
-}//-----------------
+}//------------------------------

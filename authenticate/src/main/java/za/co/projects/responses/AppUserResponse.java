@@ -1,5 +1,8 @@
 package za.co.projects.responses;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AppUserResponse {
 	
 	private Long id;
