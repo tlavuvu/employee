@@ -8,13 +8,20 @@ import za.co.projects.entities.EmployeeLeave;
 @Component
 public class EmployeeRequest {
 	
+	private String name;
+	private String surname;
+	private String idnumber;
 	private String employeeNumber;
 	private String username;
 	private EmployeeLeave leave;
 	private Address address;
 	
-	public EmployeeRequest(String employeeNumber, String username, EmployeeLeave leave, Address address) {
+	public EmployeeRequest(String name, String surname, String idnumber, String employeeNumber, String username,
+			EmployeeLeave leave, Address address) {
 		super();
+		this.name = name;
+		this.surname = surname;
+		this.idnumber = idnumber;
 		this.employeeNumber = employeeNumber;
 		this.username = username;
 		this.leave = leave;
@@ -23,6 +30,30 @@ public class EmployeeRequest {
 
 	public EmployeeRequest() {
 		super();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getIdnumber() {
+		return idnumber;
+	}
+
+	public void setIdnumber(String idnumber) {
+		this.idnumber = idnumber;
 	}
 
 	public String getEmployeeNumber() {
@@ -59,11 +90,11 @@ public class EmployeeRequest {
 
 	@Override
 	public String toString() {
-		return "EmployeeRequest [employeeNumber=" + employeeNumber + ", username=" + username + ", leave=" + leave
-				+ ", address=" + address + "]";
+		return "EmployeeRequest [name=" + name + ", surname=" + surname + ", idnumber=" + idnumber + ", employeeNumber="
+				+ employeeNumber + ", username=" + username + ", leave=" + leave + ", address=" + address + "]";
 	}
-
-
+	
+	
 	
 
 }//-----------------------------------------

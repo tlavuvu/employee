@@ -33,6 +33,18 @@ public class Employee extends Person{
 		this.leave = leave;
 		this.address = address;
 	}
+	
+	
+	public Employee(String name, String surname, String idnumber, String employeeNumber, String username,
+			EmployeeLeave leave, Address address) {
+		super(name, surname, idnumber);
+		this.employeeNumber = employeeNumber;
+		this.username = username;
+		this.leave = leave;
+		this.address = address;
+	}
+
+
 
 
 	public Employee() {
