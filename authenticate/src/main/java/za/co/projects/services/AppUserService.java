@@ -52,6 +52,8 @@ public class AppUserService {
 					loginResponse.setIdNumber(employee.getIdnumber());
 					loginResponse.setAddress(employee.getAddress());
 					loginResponse.setMessage("success");
+					loginResponse.setEmail(appUser.getEmail());
+					loginResponse.setRole(appUser.getRole());
 				}else {
 					loginResponse.setMessage("Error : Employee not found" );
 				}
@@ -61,8 +63,8 @@ public class AppUserService {
 		}else {
 			loginResponse.setMessage("Error : Username/Password is incorrect" );
 		}
-		AppUserToAppUserResponse(appUser);
-		return null;
+		
+		return loginResponse;
 	}
 	
 	public AppUser appUserRequestToAppUser(AppUserRequest appUserRequest) {

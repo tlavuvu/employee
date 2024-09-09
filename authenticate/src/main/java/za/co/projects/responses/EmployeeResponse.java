@@ -1,32 +1,18 @@
-package za.co.projects.entities;
+package za.co.projects.responses;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import za.co.projects.entities.Address;
+import za.co.projects.entities.EmployeeLeave;
 
-@Entity
-public class Employee extends Person{
+public class EmployeeResponse {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	private String employeeNumber;
 	private String username;
-	
-	@OneToOne(cascade = CascadeType.ALL)
 	private EmployeeLeave leave;
-	
-	@OneToOne
 	private Address address;
-
-
-	public Employee(String name, String surname, String idnumber, Long id, String employeeNumber, String username,
-			EmployeeLeave leave, Address address) {
-		super(name, surname, idnumber);
+	
+	public EmployeeResponse(Long id, String employeeNumber, String username, EmployeeLeave leave, Address address) {
+		super();
 		this.id = id;
 		this.employeeNumber = employeeNumber;
 		this.username = username;
@@ -34,11 +20,10 @@ public class Employee extends Person{
 		this.address = address;
 	}
 
-
-	public Employee() {
+	public EmployeeResponse() {
+		super();
 	}
 
-	
 	public Long getId() {
 		return id;
 	}
@@ -81,9 +66,10 @@ public class Employee extends Person{
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", employeeNumber=" + employeeNumber + ", username=" + username + ", leave="
-				+ leave + ", address=" + address + "]";
+		return "EmployeeResponse [id=" + id + ", employeeNumber=" + employeeNumber + ", username=" + username
+				+ ", leave=" + leave + ", address=" + address + "]";
 	}
-
 	
-}//---------------
+	
+
+}//--------------------------
