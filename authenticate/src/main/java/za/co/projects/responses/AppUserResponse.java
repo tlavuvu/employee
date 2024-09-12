@@ -10,7 +10,21 @@ public class AppUserResponse {
 	private String password;
 	private String email;
 	private String role;
+	private String responseStatus;
+	private String message;
 	
+	public AppUserResponse(Long id, String username, String password, String email, String role, String responseStatus,
+			String message) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.role = role;
+		this.responseStatus = responseStatus;
+		this.message = message;
+	}
+
 	public AppUserResponse(Long id, String username, String password, String email, String role) {
 		super();
 		this.id = id;
@@ -19,6 +33,8 @@ public class AppUserResponse {
 		this.email = email;
 		this.role = role;
 	}
+
+
 
 	public AppUserResponse() {
 		super();
@@ -64,12 +80,26 @@ public class AppUserResponse {
 		this.role = role;
 	}
 
+	public String getResponseStatus() {
+		return responseStatus;
+	}
+
+	public void setResponseStatus(String responseStatus) {
+		this.responseStatus = responseStatus;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	@Override
 	public String toString() {
 		return "AppUserResponse [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", role=" + role + "]";
+				+ ", role=" + role + ", responseStatus=" + responseStatus + ", message=" + message + "]";
 	}
 	
-	
-
 }//------------------------------------

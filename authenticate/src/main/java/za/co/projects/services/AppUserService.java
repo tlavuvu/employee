@@ -35,6 +35,21 @@ public class AppUserService {
 		return appUsers.stream().map(this::AppUserToAppUserResponse).toList();
 	}
 	
+	public AppUserResponse searchAppUser(String username) {
+		Optional<AppUser> appUserO = appUserRepository.findByUsername(username);
+		AppUser appUser = new AppUser();
+		AppUserResponse appUserResponse = new AppUserResponse();
+		if(appUserO.isPresent()) {
+			appUser = appUserO.get();
+			appUserResponse = AppUserToAppUserResponse(appUser);
+			appUserResponse.setResponseStatus("success");
+		}else {
+			appUserResponse.setMessage("User not found");
+			appUserResponse.setResponseStatus("failure");
+		}
+		return appUserResponse;
+	}
+	
 	public LoginResponse login(LoginRequest loginRequest) {
 		Optional<AppUser> appUserO = appUserRepository.findByUsername(loginRequest.getUsername());
 		AppUser appUser =  new AppUser();
@@ -54,14 +69,18 @@ public class AppUserService {
 					loginResponse.setMessage("success");
 					loginResponse.setEmail(appUser.getEmail());
 					loginResponse.setRole(appUser.getRole());
+					loginResponse.setLoginStatus("sucess");
 				}else {
-					loginResponse.setMessage("Error : Employee not found" );
+					loginResponse.setMessage("Employee not found" );
+					loginResponse.setLoginStatus("failure");
 				}
 			}else {
-				loginResponse.setMessage("Error : Username/Password is incorrect" );
+				loginResponse.setMessage("Username/Password is incorrect" );
+				loginResponse.setLoginStatus("failure");
 			}
 		}else {
-			loginResponse.setMessage("Error : Username/Password is incorrect" );
+			loginResponse.setMessage("Username/Password is incorrect" );
+			loginResponse.setLoginStatus("failure");
 		}
 		
 		return loginResponse;

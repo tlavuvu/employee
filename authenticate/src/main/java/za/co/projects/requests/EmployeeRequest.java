@@ -28,6 +28,19 @@ public class EmployeeRequest {
 		this.address = address;
 	}
 
+	public EmployeeRequest(String name, String surname, String idnumber, String employeeNumber, EmployeeLeave leave,
+			Address address) {
+		super();
+		this.name = name;
+		this.surname = surname;
+		this.idnumber = idnumber;
+		this.employeeNumber = employeeNumber;
+		this.leave = leave;
+		this.address = address;
+	}
+
+
+
 	public EmployeeRequest() {
 		super();
 	}
