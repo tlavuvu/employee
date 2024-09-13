@@ -1,5 +1,6 @@
 package za.co.projects.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Address {
 	private String town;
 	private String postalCode;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Employee employee;
 
 	public Address(Long id, String houseNumber, String streetName, String town, String postalCode, Employee employee) {

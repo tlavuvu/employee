@@ -22,8 +22,20 @@ public class Employee extends Person{
 	@OneToOne(cascade = CascadeType.ALL)
 	private EmployeeLeave leave;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
+
+
+	public Employee(String name, String surname, String idnumber, String employeeNumber, String username, String email,
+			String mobile, EmployeeLeave leave, Address address) {
+		super(name, surname, idnumber);
+		this.employeeNumber = employeeNumber;
+		this.username = username;
+		this.email = email;
+		this.mobile = mobile;
+		this.leave = leave;
+		this.address = address;
+	}
 
 
 	public Employee(String name, String surname, String idnumber, Long id, String employeeNumber, String username,

@@ -20,6 +20,8 @@ public class EmployeeService {
 		return mapEmployeeToEmployeeResponse(employeeRepository.save(employee));	
 	}
 	
+	
+	
 	public EmployeeResponse mapEmployeeToEmployeeResponse(Employee employee) {
 		return new EmployeeResponse(employee.getId(),
 				employee.getName(),
@@ -28,7 +30,9 @@ public class EmployeeService {
 				employee.getEmployeeNumber(),
 				employee.getUsername(),
 				employee.getLeave(),
-				employee.getAddress());
+				employee.getAddress(),
+				employee.getEmail(),
+				employee.getMobile());
 	}
 	
 	public Employee mapEmployeeRequestToEmployee(EmployeeRequest employeeRequest) {
@@ -37,6 +41,8 @@ public class EmployeeService {
 				employeeRequest.getIdnumber(),
 				employeeRequest.getEmployeeNumber(),
 				employeeRequest.getUsername(),
+				employeeRequest.getEmail(),
+				employeeRequest.getMobile(),
 				employeeRequest.getLeave(),
 				employeeRequest.getAddress());
 	}

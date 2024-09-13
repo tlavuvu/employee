@@ -15,7 +15,23 @@ public class EmployeeRequest {
 	private String username;
 	private EmployeeLeave leave;
 	private Address address;
+	private String email;
+	private String mobile;
 	
+	public EmployeeRequest(String name, String surname, String idnumber, String employeeNumber, String username,
+			EmployeeLeave leave, Address address, String email, String mobile) {
+		super();
+		this.name = name;
+		this.surname = surname;
+		this.idnumber = idnumber;
+		this.employeeNumber = employeeNumber;
+		this.username = username;
+		this.leave = leave;
+		this.address = address;
+		this.email = email;
+		this.mobile = mobile;
+	}
+
 	public EmployeeRequest(String name, String surname, String idnumber, String employeeNumber, String username,
 			EmployeeLeave leave, Address address) {
 		super();
@@ -101,11 +117,29 @@ public class EmployeeRequest {
 		this.address = address;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
 	@Override
 	public String toString() {
 		return "EmployeeRequest [name=" + name + ", surname=" + surname + ", idnumber=" + idnumber + ", employeeNumber="
-				+ employeeNumber + ", username=" + username + ", leave=" + leave + ", address=" + address + "]";
+				+ employeeNumber + ", username=" + username + ", leave=" + leave + ", address=" + address + ", email="
+				+ email + ", mobile=" + mobile + "]";
 	}
+
 	
 	
 	
