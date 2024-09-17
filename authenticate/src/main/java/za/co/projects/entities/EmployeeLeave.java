@@ -15,16 +15,14 @@ public class EmployeeLeave {
 	private Long id;
 	
 	private double leaveDays;
-	private double requestedLeaveDays;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Employee employee;
 
-	public EmployeeLeave(Long id, double leaveDays, double requestedLeaveDays, Employee employee) {
+	public EmployeeLeave(Long id, double leaveDays, Employee employee) {
 		super();
 		this.id = id;
 		this.leaveDays = leaveDays;
-		this.requestedLeaveDays = requestedLeaveDays;
 		this.employee = employee;
 	}
 
@@ -48,14 +46,6 @@ public class EmployeeLeave {
 		this.leaveDays = leaveDays;
 	}
 
-	public double getRequestedLeaveDays() {
-		return requestedLeaveDays;
-	}
-
-	public void setRequestedLeaveDays(double requestedLeaveDays) {
-		this.requestedLeaveDays = requestedLeaveDays;
-	}
-
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -66,12 +56,8 @@ public class EmployeeLeave {
 
 	@Override
 	public String toString() {
-		return "Leave [id=" + id + ", leaveDays=" + leaveDays + ", requestedLeaveDays=" + requestedLeaveDays
-				+ ", employee=" + employee + "]";
+		return "EmployeeLeave [id=" + id + ", leaveDays=" + leaveDays + ", employee=" + employee + "]";
 	}
 
-
 	
-	
-
 }//------------------

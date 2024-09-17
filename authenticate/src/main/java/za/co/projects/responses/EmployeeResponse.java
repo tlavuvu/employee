@@ -13,7 +13,45 @@ public class EmployeeResponse {
 	private String username;
 	private EmployeeLeave leave;
 	private Address address;
+	private String email;
+	private String mobile;
+	private String status;
+	private String message;
 	
+	
+	public EmployeeResponse(Long id, String name, String surname, String idnumber, String employeeNumber,
+			String username, EmployeeLeave leave, Address address, String email, String mobile, String status,
+			String message) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.idnumber = idnumber;
+		this.employeeNumber = employeeNumber;
+		this.username = username;
+		this.leave = leave;
+		this.address = address;
+		this.email = email;
+		this.mobile = mobile;
+		this.status = status;
+		this.message = message;
+	}
+
+	public EmployeeResponse(Long id, String name, String surname, String idnumber, String employeeNumber,
+			String username, EmployeeLeave leave, Address address, String email, String mobile) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.idnumber = idnumber;
+		this.employeeNumber = employeeNumber;
+		this.username = username;
+		this.leave = leave;
+		this.address = address;
+		this.email = email;
+		this.mobile = mobile;
+	}
+
 	public EmployeeResponse(Long id, String name, String surname, String idnumber, String employeeNumber,
 			String username, EmployeeLeave leave, Address address) {
 		super();
@@ -95,12 +133,44 @@ public class EmployeeResponse {
 		this.address = address;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	@Override
 	public String toString() {
 		return "EmployeeResponse [id=" + id + ", name=" + name + ", surname=" + surname + ", idnumber=" + idnumber
 				+ ", employeeNumber=" + employeeNumber + ", username=" + username + ", leave=" + leave + ", address="
-				+ address + "]";
+				+ address + ", email=" + email + ", mobile=" + mobile + ", status=" + status + ", message=" + message
+				+ "]";
 	}
-	
 	
 }//--------------------------

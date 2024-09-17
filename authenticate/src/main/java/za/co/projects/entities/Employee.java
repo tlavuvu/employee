@@ -16,12 +16,26 @@ public class Employee extends Person{
 	
 	private String employeeNumber;
 	private String username;
+	private String email;
+	private String mobile;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private EmployeeLeave leave;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
+
+
+	public Employee(String name, String surname, String idnumber, String employeeNumber, String username, String email,
+			String mobile, EmployeeLeave leave, Address address) {
+		super(name, surname, idnumber);
+		this.employeeNumber = employeeNumber;
+		this.username = username;
+		this.email = email;
+		this.mobile = mobile;
+		this.leave = leave;
+		this.address = address;
+	}
 
 
 	public Employee(String name, String surname, String idnumber, Long id, String employeeNumber, String username,
@@ -44,7 +58,17 @@ public class Employee extends Person{
 		this.address = address;
 	}
 
-
+	public Employee(String name, String surname, String idnumber, Long id, String employeeNumber, String username,
+			String email, String mobile, EmployeeLeave leave, Address address) {
+		super(name, surname, idnumber);
+		this.id = id;
+		this.employeeNumber = employeeNumber;
+		this.username = username;
+		this.email = email;
+		this.mobile = mobile;
+		this.leave = leave;
+		this.address = address;
+	}
 
 
 	public Employee() {
@@ -91,11 +115,33 @@ public class Employee extends Person{
 		this.address = address;
 	}
 
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getMobile() {
+		return mobile;
+	}
+
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", employeeNumber=" + employeeNumber + ", username=" + username + ", leave="
-				+ leave + ", address=" + address + "]";
+		return "Employee [id=" + id + ", employeeNumber=" + employeeNumber + ", username=" + username + ", email="
+				+ email + ", mobile=" + mobile + ", leave=" + leave + ", address=" + address + "]";
 	}
+
 
 	
 }//---------------
