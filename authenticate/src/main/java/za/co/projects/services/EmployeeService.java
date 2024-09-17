@@ -1,5 +1,8 @@
 package za.co.projects.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +23,25 @@ public class EmployeeService {
 		return mapEmployeeToEmployeeResponse(employeeRepository.save(employee));	
 	}
 	
+	public List<EmployeeResponse> getAllEmployees(){
+		List<Employee> employees =  employeeRepository.findAll();
+		return employees.stream().map(this::mapEmployeeToEmployeeResponse).toList();
+	}
 	
+	public EmployeeResponse searchEmployee(String idnumber) {
+		Optional<Employee> employeeO = employeeRepository.findByIdnumber(idnumber);
+		EmployeeResponse employeeResponse = new EmployeeResponse();
+		if(employeeO.isPresent()) {
+			employeeResponse = mapEmployeeToEmployeeResponse(employeeO.get());
+			employeeResponse.setStatus("success");
+			employeeResponse.setMessage("success");
+		}else {
+			employeeResponse.setStatus("failure");
+			employeeResponse.setMessage("Employee not found");
+			return employeeResponse;
+		}
+		return employeeResponse;
+	}
 	
 	public EmployeeResponse mapEmployeeToEmployeeResponse(Employee employee) {
 		return new EmployeeResponse(employee.getId(),
@@ -33,6 +54,7 @@ public class EmployeeService {
 				employee.getAddress(),
 				employee.getEmail(),
 				employee.getMobile());
+		
 	}
 	
 	public Employee mapEmployeeRequestToEmployee(EmployeeRequest employeeRequest) {
