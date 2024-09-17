@@ -24,10 +24,8 @@ public class LoginController {
 	
 	@PostMapping
 	public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
-		System.out.println(loginRequest.toString());
-		LoginResponse lr = appUserService.login(loginRequest);
-		System.out.println(lr);
-		return new ResponseEntity<LoginResponse>(lr,HttpStatus.OK);
+		LoginResponse loginResponse = appUserService.login(loginRequest);
+		return new ResponseEntity<LoginResponse>(loginResponse,HttpStatus.OK);
 	}
 	
 }//-------------------------------------
