@@ -1,11 +1,9 @@
 package za.co.projects.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -19,9 +17,6 @@ public class Address {
 	private String town;
 	private String postalCode;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private Employee employee;
-
 	public Address(Long id, String houseNumber, String streetName, String town, String postalCode) {
 		super();
 		this.id = id;
